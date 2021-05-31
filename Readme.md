@@ -1,8 +1,8 @@
-###Imię i Nazwisko: Mateusz Biliński
+##Imię i Nazwisko: Mateusz Biliński
 
-###Nazwa Projektu: Angly.me
+##Nazwa Projektu: Angly.me
 
-###Opis Projektu:
+##Opis Projektu:
 Projekt Angly.me będzie to prosty panel dostępu dla uczniów szkoły językowej.
 Uczniowie będą mogli sprawdzić takie informacje jak:  
 -godziny spotkań,   
