@@ -3,29 +3,22 @@ package angly.me.studentplatform.student;
 import java.time.LocalDate;
 
 public class Student {
-//    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate dob;
     private Integer age;
+    private String password;
 
-    public Student(Long id, String firstName, String lastName, String email, LocalDate dob, Integer age) {
-//        this.id = id;
+    public Student(String firstName, String lastName, String email, LocalDate dob, Integer age, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.dob = dob;
         this.age = age;
+        this.password = password;
     }
 
-/*    public Long getId() {
-        return id;
-    }*/
-
-/*    public void setId(Long id) {
-        this.id = id;
-    }*/
 
     public String getFirstName() {
         return firstName;
@@ -67,16 +60,14 @@ public class Student {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-           //     "id=" + id +
-                ", name='" + firstName + '\'' +
-                ", name='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", dob=" + dob +
-                ", age=" + age +
-                '}';
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
+
+
 

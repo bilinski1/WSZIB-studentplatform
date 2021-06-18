@@ -17,16 +17,15 @@ public class StudentServiceImp implements StudentService {
     StudentEntity studentEntity = new StudentEntity();
     BeanUtils.copyProperties(student, studentEntity);
 
-    studentEntity.setEncryptedPassword("test"); // temporarily hardcoded;
-    //studentEntity.setStudentId("testUserId");
+    studentEntity.setEncryptedPassword("test2");
+    studentEntity.setStudentId("testUserId2");
 
     StudentEntity storedStudentDetails = studentRepository.save(studentEntity);
 
     StudentDTO returnValue = new StudentDTO();
     BeanUtils.copyProperties(storedStudentDetails, returnValue);
 
-
-    return null;
+    return returnValue;
 }
 
 }

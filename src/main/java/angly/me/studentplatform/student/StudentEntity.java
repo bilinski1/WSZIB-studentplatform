@@ -26,10 +26,10 @@ public class StudentEntity implements Serializable {
     @Column(nullable = false, length = 120)
     private String email;
 
-    @Column(nullable = true, length = 50)
+    @Column(nullable = false, length = 50)
     private Integer age;
 
-    @Column(nullable = true, length = 50)
+    @Column
     private LocalDate dob;
 
     private String encryptedPassword;
