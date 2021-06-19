@@ -26,7 +26,7 @@ public class StudentEntity implements Serializable {
     @Column(nullable = false, length = 120)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique=true)
     private Integer age;
 
     @Column
