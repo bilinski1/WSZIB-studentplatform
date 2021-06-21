@@ -4,6 +4,9 @@ import angly.me.studentplatform.StudentRepository;
 import angly.me.studentplatform.shared.Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +16,10 @@ public class StudentServiceImp implements StudentService {
     StudentRepository studentRepository;
 
     @Autowired
-    Utils utils;
+    Utils utils; // Generating Random Users ID
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder; //Encoding Users Password
 
     @Override
     public StudentDTO createStudent(StudentDTO student) {
@@ -24,7 +30,7 @@ public class StudentServiceImp implements StudentService {
 
     String publicUserId = utils.generateUserId(30);
 
-    studentEntity.setEncryptedPassword("test2");
+    studentEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(student.getPassword()));
     studentEntity.setStudentId(publicUserId);
 
     StudentEntity storedStudentDetails = studentRepository.save(studentEntity);
@@ -35,4 +41,8 @@ public class StudentServiceImp implements StudentService {
     return returnValue;
 }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
+    }
 }

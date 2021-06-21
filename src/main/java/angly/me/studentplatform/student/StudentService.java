@@ -1,5 +1,7 @@
 package angly.me.studentplatform.student;
 
-public interface StudentService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface StudentService extends UserDetailsService {
     StudentDTO createStudent(StudentDTO student);
 }
