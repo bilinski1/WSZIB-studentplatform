@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/student")
+@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
@@ -14,7 +14,7 @@ public class StudentController {
 
     @GetMapping
     public String getStudent() {
-        return "create user was called";
+        return "get user was called";
 
     }
 

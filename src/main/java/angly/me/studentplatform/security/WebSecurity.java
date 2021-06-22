@@ -1,4 +1,4 @@
-package angly.me.studentplatform;
+package angly.me.studentplatform.security;
 
 import angly.me.studentplatform.student.StudentService;
 import org.springframework.http.HttpMethod;
@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.access.intercept.AuthorizationFilter;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -26,11 +25,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/v1/student")
+                .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
                 .permitAll()
-                .anyRequest()
-                .authenticated();
-
+                .anyRequest().authenticated().and()
+                .addFilter(getAuthenticationFilter()) // Authentication Filter
+                .addFilter(new AuthorizationFilter(authenticationManager())) // Authorization Filter
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Do not make HTTP Session
 
 
     }
@@ -40,5 +41,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    protected AuthenticationFilter getAuthenticationFilter() throws Exception {
+        final AuthenticationFilter filter = new AuthenticationFilter(authenticationManager());
+        filter.setFilterProcessesUrl("/students/login");
+        return filter;
+    }
 
 }
+

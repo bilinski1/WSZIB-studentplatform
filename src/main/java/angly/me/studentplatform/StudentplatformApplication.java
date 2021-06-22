@@ -16,4 +16,10 @@ public class StudentplatformApplication {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public SpringApplicationContext springApplicationContext()
+    {
+        return new SpringApplicationContext();
+    }
+
 }
