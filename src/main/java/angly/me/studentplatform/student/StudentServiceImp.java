@@ -55,6 +55,16 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
+    public StudentDTO getStudentByStudentId(String studentId) {
+        StudentDTO returnValue = new StudentDTO();
+        StudentEntity studentEntity = studentRepository.findByStudentId(studentId);
+        if (studentEntity == null) throw new UsernameNotFoundException(studentId);
+        BeanUtils.copyProperties(studentEntity, returnValue);
+        return returnValue;
+    }
+
+
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         StudentEntity studentEntity = studentRepository.findByEmail(email);
         if (studentEntity == null) throw new UsernameNotFoundException(email);

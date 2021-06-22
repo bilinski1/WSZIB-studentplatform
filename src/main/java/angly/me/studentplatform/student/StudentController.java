@@ -12,13 +12,18 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @GetMapping
-    public String getStudent() {
-        return "get user was called";
+    @GetMapping(path="/{id}") // getting single student
+    public StudentResponse getStudent(@PathVariable String id)
+    {
+        StudentResponse returnValue = new StudentResponse();
+        StudentDTO studentDTO = studentService.getStudentByStudentId(id);
+        BeanUtils.copyProperties(studentDTO, returnValue);
+
+        return returnValue;
 
     }
 
-    @PostMapping
+    @PostMapping // registration
     public StudentResponse createStudent(@RequestBody Student studentDetails)
     {
         StudentResponse returnValue = new StudentResponse();
