@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/students")
 public class StudentController {
 
@@ -22,7 +23,7 @@ public class StudentController {
         return returnValue;
 
     }
-
+    @CrossOrigin
     @PostMapping // registration
     public StudentResponse createStudent(@RequestBody Student studentDetails)
     {
