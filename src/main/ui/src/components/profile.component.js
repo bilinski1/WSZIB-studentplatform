@@ -13,13 +13,14 @@ const Profile = () => {
 
   return (
     <div>
+      <h3>PROFIL</h3>
       <b>imię: {studentDetails.firstName}</b>
       <br />
       <b>nazwisko: {studentDetails.lastName}</b>
       <br />
       <b>email: {studentDetails.email}</b>
       <br />
-      <b>Nr studenta: {studentDetails.email}</b>
+      <b>Nr studenta: {studentDetails.studentId}</b>
     </div>
   );
 };

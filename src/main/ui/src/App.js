@@ -14,12 +14,13 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      currentUser: undefined,
+      currentUser: null,
     };
   }
 
   componentDidMount() {
-    const user = AuthService.getCurrentUser();
+    const user = localStorage.getItem('studentid');
+    console.log(user);
 
     if (user) {
       this.setState({
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    const currentUser = this.state.currentUser;
 
     return (
       <div>
@@ -41,14 +42,14 @@ class App extends Component {
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
-                Home
+                HOME
               </Link>
             </li>
 
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                  User
+                  Profil Studenta
                 </Link>
               </li>
             )}
@@ -63,7 +64,7 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogIn/Out
+                  Wyloguj
                 </a>
               </li>
             </div>

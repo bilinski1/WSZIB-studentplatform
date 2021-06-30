@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-
-import UserService from "../services/user-service";
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +31,10 @@ export default class Home extends Component {
       <div className="container">
         <header className="jumbotron">
           <h3>HOME</h3>
+          <br />
+          <p>Witaj w intranecie.</p>
+          <p>Na tą chwilę, możesz tu sprawdzić swoje dane oraz dane kursu.</p>
+          <p>W tym celu wejdź przejdź do zakładki Profil. </p>
         </header>
       </div>
     );
