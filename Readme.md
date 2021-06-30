@@ -14,5 +14,7 @@ Każdy z uczniów na początku dostanie swój login oraz hasło, który umożliw
 Docelowo, aplikacja będzie posiadała jescze panel administratora, gdzie te danę będą wstępnie uzupełniane. 
 
 Front End: React  
+PORT: localhost/3000
 Back End: Java, SpringBoot  
+PORT: localhost/8081
 Baza Danych: MySQL
