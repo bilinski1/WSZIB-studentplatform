@@ -23,10 +23,13 @@ public class StudentEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String lastName;
 
-    @Column(nullable = false, length = 120)
+    @Column(nullable = false, length = 50)
+    private String level;
+
+    @Column(nullable = false, length = 120, unique=true)
     private String email;
 
-    @Column(nullable = false, length = 50, unique=true)
+    @Column(nullable = false, length = 50)
     private Integer age;
 
     @Column
@@ -69,6 +72,14 @@ public class StudentEntity implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 
     public String getEmail() {

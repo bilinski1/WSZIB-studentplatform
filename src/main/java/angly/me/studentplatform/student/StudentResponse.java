@@ -5,6 +5,15 @@ public class StudentResponse {
     private String firstName;
     private String lastName;
     private String email;
+    private String level;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
     public String getStudentId() {
         return studentId;

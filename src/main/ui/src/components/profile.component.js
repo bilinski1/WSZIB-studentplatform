@@ -21,6 +21,8 @@ const Profile = () => {
       <b>email: {studentDetails.email}</b>
       <br />
       <b>Nr studenta: {studentDetails.studentId}</b>
+      <br />
+      <b>Twój poziom: {studentDetails.level}</b>
     </div>
   );
 };

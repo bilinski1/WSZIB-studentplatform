@@ -9,19 +9,29 @@ public class Student {
     private LocalDate dob;
     private Integer age;
     private String password;
+    private String level;
 
-    public Student(String firstName, String lastName, String email, LocalDate dob, Integer age, String password) {
+    public Student(String firstName, String lastName, String email, LocalDate dob, Integer age, String password, String level) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.dob = dob;
         this.age = age;
         this.password = password;
+        this.level = level;
     }
 
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 
     public void setFirstName(String name) {

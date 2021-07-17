@@ -6,7 +6,7 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth-service";
 
-const required = value => {
+const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -16,7 +16,7 @@ const required = value => {
   }
 };
 
-const email = value => {
+const email = (value) => {
   if (!isEmail(value)) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -36,7 +36,7 @@ const email = value => {
 //   }
 // };
 
-const vpassword = value => {
+const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -53,6 +53,7 @@ export default class Register extends Component {
     this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeLastName = this.onChangeLastName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangeLevel = this.onChangeLevel.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
 
     this.state = {
@@ -63,31 +64,38 @@ export default class Register extends Component {
       email: "",
       password: "",
       successful: false,
-      message: ""
+      message: "",
+      level: "",
     };
   }
 
   onChangeFirstName(e) {
     this.setState({
-      firstName: e.target.value
+      firstName: e.target.value,
     });
   }
 
   onChangeLastName(e) {
     this.setState({
-      lastName: e.target.value
+      lastName: e.target.value,
     });
   }
 
   onChangeEmail(e) {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
   }
 
   onChangePassword(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
+    });
+  }
+
+  onChangeLevel(e) {
+    this.setState({
+      level: e.target.value,
     });
   }
 
@@ -96,8 +104,8 @@ export default class Register extends Component {
     console.log(this.state);
 
     this.setState({
-      message: "",
-      successful: false
+      message: "Dziękujemy za Rejestrację, Przejdź do zakładki Zaloguj się",
+      successful: false,
     });
 
     this.form.validateAll();
@@ -110,14 +118,16 @@ export default class Register extends Component {
         this.state.password,
         this.state.age,
         this.state.dob,
+        this.state.level
       ).then(
-        response => {
+        (response) => {
           this.setState({
             message: response.data.message,
-            successful: true
+            successful: true,
           });
         },
-        error => {
+
+        (error) => {
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -127,7 +137,7 @@ export default class Register extends Component {
 
           this.setState({
             successful: false,
-            message: resMessage
+            message: resMessage,
           });
         }
       );
@@ -146,7 +156,7 @@ export default class Register extends Component {
 
           <Form
             onSubmit={this.handleRegister}
-            ref={c => {
+            ref={(c) => {
               this.form = c;
             }}
           >
@@ -160,7 +170,7 @@ export default class Register extends Component {
                     name="firstname"
                     value={this.state.firstName}
                     onChange={this.onChangeFirstName}
-                   // validations={[required, vusername]}
+                    // validations={[required, vusername]}
                   />
                 </div>
 
@@ -172,7 +182,7 @@ export default class Register extends Component {
                     name="lastname"
                     value={this.state.lastName}
                     onChange={this.onChangeLastName}
-                   // validations={[required, vusername]}
+                    // validations={[required, vusername]}
                   />
                 </div>
 
@@ -201,7 +211,21 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Zarejestruj</button>
+                  <label htmlFor="level">Określ Swój Poziom</label>
+                  <Input
+                    type="level"
+                    className="form-control"
+                    name="level"
+                    value={this.state.level}
+                    onChange={this.onChangeLevel}
+                    //    validations={[required, vpassword]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <button className="btn btn-primary btn-block">
+                    Zarejestruj
+                  </button>
                 </div>
               </div>
             )}
@@ -222,11 +246,20 @@ export default class Register extends Component {
             )}
             <CheckButton
               style={{ display: "none" }}
-              ref={c => {
+              ref={(c) => {
                 this.checkBtn = c;
               }}
             />
           </Form>
+
+          {this.state.successful && (
+            <div>
+              <p>
+                Dziękujemy za rejestrację. Przejdź do zakładki "Zaloguj" i wpisz
+                swój email oraz hasło podane przy rejestracji{" "}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     );

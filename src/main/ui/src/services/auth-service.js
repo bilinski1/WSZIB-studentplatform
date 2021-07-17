@@ -31,7 +31,7 @@ class AuthService {
   }
 
   //WORKING
-  register(firstName, lastName, email, password, age, dob) {
+  register(firstName, lastName, email, password, age, dob, level) {
     return axios.post(API_URL, {
       firstName,
       lastName,
@@ -39,6 +39,7 @@ class AuthService {
       dob,
       email,
       password,
+      level
     });
   }
 
