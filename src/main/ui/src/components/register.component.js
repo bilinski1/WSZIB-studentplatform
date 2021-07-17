@@ -251,7 +251,6 @@ export default class Register extends Component {
               }}
             />
           </Form>
-
           {this.state.successful && (
             <div>
               <p>
