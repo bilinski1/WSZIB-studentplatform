@@ -35,10 +35,15 @@ public class StudentController {
         return returnValue;
     }
 
-    @PutMapping
-    public String updateStudent()
+    @PutMapping(path="/{id}") // update info of a single user
+    public StudentResponse updateStudent(@PathVariable String id, @RequestBody Student studentDetails)
     {
-        return "update Student was called";
+        StudentResponse returnValue = new StudentResponse();
+        StudentDTO studentDTO = new StudentDTO();
+        BeanUtils.copyProperties(studentDetails, studentDTO);
+        StudentDTO updatedStudent = studentService.updateStudent(id, studentDTO);
+        BeanUtils.copyProperties(updatedStudent, returnValue);
+        return returnValue;
     }
 
     @DeleteMapping

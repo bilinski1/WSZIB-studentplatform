@@ -17,8 +17,26 @@ public class StudentDTO implements Serializable {
     private String emailVerificationToken;
     private Boolean emailVerificationStatus = false;
     private String level;
+    private String time;
+    private String courseDetails;
+    private String paymentStatus;
+    private String progress;
 
+    public String getTime() { return time; }
 
+    public void setTime(String time) { this.time = time; }
+
+    public String getCourseDetails() { return courseDetails; }
+
+    public void setCourseDetails(String courseDetails) { this.courseDetails = courseDetails; }
+
+    public String getPaymentStatus() { return paymentStatus; }
+
+    public void setPaymentStatus(String paymentStatus) { this.paymentStatus = paymentStatus; }
+
+    public String getProgress() { return progress; }
+
+    public void setProgress(String progress) { this.progress = progress; }
 
     public String getLevel() {
         return level;

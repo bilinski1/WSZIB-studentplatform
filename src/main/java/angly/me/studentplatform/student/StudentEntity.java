@@ -1,6 +1,4 @@
 package angly.me.studentplatform.student;
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -32,6 +30,18 @@ public class StudentEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private Integer age;
 
+    @Column(length = 50)
+    private String time;
+
+    @Column(nullable = false, length = 50)
+    private String courseDetails;
+
+    @Column(length = 50)
+    private String paymentStatus;
+
+    @Column(length = 50)
+    private String progress;
+
     @Column
     private LocalDate dob;
 
@@ -41,6 +51,38 @@ public class StudentEntity implements Serializable {
 
     @Column(nullable = false)
     private Boolean emailVerificationStatus = false;
+
+
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getCourseDetails() { return courseDetails; }
+
+    public void setCourseDetails(String courseDetails) {
+        this.courseDetails = courseDetails;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
 
     public long getId() {
         return id;

@@ -26,7 +26,7 @@ public class Student {
         this.password = password;
         this.level = level;
         this.time = time;
-        this.courseDetails= courseDetails;
+        this.courseDetails = courseDetails;
         this.paymentStatus = paymentStatus;
         this.progress = progress;
     }
@@ -47,11 +47,10 @@ public class Student {
         this.progress = progress;
     }
 
-    public String getDetails() {
+    public String getCourseDetails() {
         return courseDetails;
     }
-
-    public void setDetails(String courseDetails) {
+    public void setCourseDetails(String courseDetails) {
         this.courseDetails = courseDetails;
     }
 
