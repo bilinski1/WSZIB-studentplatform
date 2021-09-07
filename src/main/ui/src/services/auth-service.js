@@ -1,10 +1,13 @@
 import axios from "axios";
 
+
 const API_URL = "https://anglystudentplatform.herokuapp.com/students";
 
 class AuthService {
 
   login(email, password) {
+
+
     return axios
       .post(API_URL + "/login", {
         email,
@@ -19,7 +22,6 @@ class AuthService {
         localStorage.setItem("studentid", studentid);
         console.log(localStorage);
         console.log("user logged in");
-
         return response.data;
       });
   }
