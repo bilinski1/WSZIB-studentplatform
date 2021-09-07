@@ -1,10 +1,9 @@
 import axios from "axios";
-//import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8080/students";
+const API_URL = "https://anglystudentplatform.herokuapp.com/students";
 
 class AuthService {
-  //WORKING
+
   login(email, password) {
     return axios
       .post(API_URL + "/login", {
@@ -24,13 +23,12 @@ class AuthService {
         return response.data;
       });
   }
-  // WORKING
+
   logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("studentid");
   }
 
-  //WORKING
   register(firstName, lastName, email, password, age, dob, level) {
     return axios.post(API_URL, {
       firstName,
@@ -39,15 +37,14 @@ class AuthService {
       dob,
       email,
       password,
-      level
+      level,
     });
   }
 
-  //WORKING
   getCurrentUser() {
     let profileid = localStorage.getItem("studentid");
     console.log(profileid);
-    let PROFILE_URL = `http://localhost:8081/students/${profileid}`;
+    let PROFILE_URL = `https://anglystudentplatform.herokuapp.com/students/${profileid}`;
     return axios
       .get(PROFILE_URL, {
         headers: { Authorization: localStorage.getItem("token") },
@@ -56,6 +53,45 @@ class AuthService {
         console.log(response.data);
         let userdetails = response.data;
         return userdetails;
+      });
+  }
+
+  updateStudent(
+    firstName,
+    lastName,
+    age,
+    dob,
+    email,
+    password,
+    level,
+    time,
+    courseDetails,
+    paymentStatus,
+    progress
+  ) {
+
+    let profileid = localStorage.getItem("updatedId");
+    let PROFILE_URL = `https://anglystudentplatform.herokuapp.com/students/${profileid}`;
+    return axios
+      .put(
+        PROFILE_URL,
+        {
+          firstName,
+          lastName,
+          age,
+          dob,
+          email,
+          password,
+          level,
+          time,
+          courseDetails,
+          paymentStatus,
+          progress,
+        },
+        { headers: { Authorization: localStorage.getItem("token") } }
+      )
+      .then((response) => {
+        console.log(response.data);
       });
   }
 }

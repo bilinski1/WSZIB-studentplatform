@@ -55,3 +55,18 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+}
+
+.width {
+width: 50%;
+text-align: left;
+  
+}

@@ -33,7 +33,7 @@ public class StudentEntity implements Serializable {
     @Column(length = 50)
     private String time;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 200)
     private String courseDetails;
 
     @Column(length = 50)
