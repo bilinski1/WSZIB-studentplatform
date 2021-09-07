@@ -29,7 +29,7 @@ class AuthService {
     localStorage.removeItem("studentid");
   }
 
-  register(firstName, lastName, email, password, age, dob, level) {
+  register(firstName, lastName, email, password, age, dob, level, time, courseDetails, paymentStatus, progress) {
     return axios.post(API_URL, {
       firstName,
       lastName,
@@ -38,6 +38,10 @@ class AuthService {
       email,
       password,
       level,
+      time,
+      courseDetails,
+      paymentStatus,
+      progress,
     });
   }
 
